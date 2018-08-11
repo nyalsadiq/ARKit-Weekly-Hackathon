@@ -89,7 +89,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // Create a plane to visualize the initial position of the detected image.
             let card = SCNScene(named: "Edi.scn")!
             
-            card.rootNode.eulerAngles.x = -.pi / 2
+            //card.rootNode.eulerAngles.x = -.pi / 2
             card.rootNode.scale.x = 5
             card.rootNode.scale.y = 5
             
