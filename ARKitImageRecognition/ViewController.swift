@@ -87,26 +87,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         updateQueue.async {
             
             // Create a plane to visualize the initial position of the detected image.
-            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                                 height: referenceImage.physicalSize.height)
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.25
+            let card = SCNScene(named: "Edi.scn")!
             
-            /*
-             `SCNPlane` is vertically oriented in its local coordinate space, but
-             `ARImageAnchor` assumes the image is horizontal in its local space, so
-             rotate the plane to match.
-             */
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            /*
-             Image anchors are not tracked after initial detection, so create an
-             animation that limits the duration for which the plane visualization appears.
-             */
-            planeNode.runAction(self.imageHighlightAction)
+            card.rootNode.eulerAngles.x = -.pi / 2
+            card.rootNode.scale.x = 5
+            card.rootNode.scale.y = 5
             
             // Add the plane visualization to the scene.
-            node.addChildNode(planeNode)
+            node.addChildNode(card.rootNode)
         }
 
         DispatchQueue.main.async {
@@ -122,8 +110,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             .fadeOpacity(to: 0.85, duration: 0.25),
             .fadeOpacity(to: 0.15, duration: 0.25),
             .fadeOpacity(to: 0.85, duration: 0.25),
-            .fadeOut(duration: 0.5),
-            .removeFromParentNode()
         ])
     }
 }
