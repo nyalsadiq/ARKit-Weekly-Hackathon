@@ -36,10 +36,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         sceneView.session.delegate = self
-
+        
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        tapRecognizer.addTarget(self, action: #selector(tapBox(rec:)))
+        sceneView.addGestureRecognizer(tapRecognizer)
+        
+        sceneView.autoenablesDefaultLighting = true
+        
         // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+        }
+    }
+    
+    @objc func tapBox(rec gestureRecognizer : UITapGestureRecognizer) {
+        guard gestureRecognizer.view != nil else { return }
+        
+        if gestureRecognizer.state == .ended {
+            let location: CGPoint = gestureRecognizer.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if !hits.isEmpty {
+                let tappedNode = hits.first?.node
+                statusViewController.scheduleMessage((tappedNode?.name)!, inSeconds: 0.1, messageType: .contentPlacement)
+            }
         }
     }
 
@@ -90,8 +111,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let card = SCNScene(named: "Edi.scn")!
             
             //card.rootNode.eulerAngles.x = -.pi / 2
-            card.rootNode.scale.x = 5
-            card.rootNode.scale.y = 5
+            let rotation = SCNAction.rotateBy(x: 0, y: 360, z: 0, duration: 1000)
+            let scale = SCNAction.scale(by: 5.0, duration: 5)
+            
+            card.rootNode.runAction(scale, forKey: "edi_scale")
+            card.rootNode.runAction(rotation, forKey: "edi_rotate")
             
             // Add the plane visualization to the scene.
             node.addChildNode(card.rootNode)
