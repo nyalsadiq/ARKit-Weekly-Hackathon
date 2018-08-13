@@ -5,6 +5,10 @@
 # Finder
 .DS_Store
 
+# Config stuff
+/Configuration/
+/LICENSE/
+
 # Xcode - User files
 xcuserdata/
 *.xcworkspace
