@@ -14,7 +14,6 @@
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
 		8B4ECF27211F27B30061F3A2 /* Edi.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8B4ECF26211F27B30061F3A2 /* Edi.scn */; };
 		8B9BE63D211F39A700BCE253 /* edilogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B9BE63C211F39A700BCE253 /* edilogo.jpg */; };
-		8BD857062120CEE80025D237 /* Student.scn in Resources */ = {isa = PBXBuildFile; fileRef = 8BD857052120CEE80025D237 /* Student.scn */; };
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B4ECF26211F27B30061F3A2 /* Edi.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Edi.scn; sourceTree = "<group>"; };
 		8B9BE63C211F39A700BCE253 /* edilogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = edilogo.jpg; sourceTree = "<group>"; };
-		8BD857052120CEE80025D237 /* Student.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Student.scn; sourceTree = "<group>"; };
 		C14378D0C14383A000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
 				C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */,
 				8B4ECF26211F27B30061F3A2 /* Edi.scn */,
-				8BD857052120CEE80025D237 /* Student.scn */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
 				1488324C1EFC3ED00043E0AB /* Resources */,
 			);
@@ -178,7 +175,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BD857062120CEE80025D237 /* Student.scn in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
 				8B9BE63D211F39A700BCE253 /* edilogo.jpg in Resources */,

@@ -45,6 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.autoenablesDefaultLighting = true
         
+        
         // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
@@ -62,6 +63,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 statusViewController.scheduleMessage((tappedNode?.name)!, inSeconds: 0.1, messageType: .contentPlacement)
             }
         }
+    }
+    
+    func createTextNode(string: String) -> SCNNode {
+        let text = SCNText(string: string, extrusionDepth: 0.2)
+        text.font = UIFont.systemFont(ofSize: 16.0)
+        text.flatness = 0.2
+        text.firstMaterial?.diffuse.contents = UIColor.cyan
+        
+        let textNode = SCNNode(geometry: text)
+        let fontSize = Float(0.1)
+        textNode.scale = SCNVector3(fontSize, fontSize, fontSize)
+        textNode.eulerAngles.x = -.pi / 2
+        textNode.isHidden = false
+        return textNode
+    }
+    
+    func addText(string: String, parent: SCNNode) -> SCNNode {
+        let textNode = self.createTextNode(string: string)
+        textNode.position = SCNVector3Zero
+        parent.addChildNode(textNode)
+        return textNode
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -107,12 +129,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let referenceImage = imageAnchor.referenceImage
         updateQueue.async {
             
+            let sid = self.addText(string: "S1642131", parent: node)
+            sid.runAction(SCNAction.moveBy(x: 4, y: 0.0, z: 0.0, duration: 1))
+            
+            let sname = self.addText(string: "NT Sadiq", parent: node)
+            sname.runAction(SCNAction.moveBy(x: 4, y: 0.0, z: 2.0, duration: 1))
+
             // Create a plane to visualize the initial position of the detected image.
             let card = SCNScene(named: "Edi.scn")!
             
             //card.rootNode.eulerAngles.x = -.pi / 2
-            let rotation = SCNAction.rotateBy(x: 0, y: 360, z: 0, duration: 1000)
-            let scale = SCNAction.scale(by: 5.0, duration: 5)
+            let rotation = SCNAction.rotateBy(x: 0, y: 360, z: 0, duration: 100)
+            let scale = SCNAction.scale(by: 2.0, duration: 5)
             
             card.rootNode.runAction(scale, forKey: "edi_scale")
             card.rootNode.runAction(rotation, forKey: "edi_rotate")
