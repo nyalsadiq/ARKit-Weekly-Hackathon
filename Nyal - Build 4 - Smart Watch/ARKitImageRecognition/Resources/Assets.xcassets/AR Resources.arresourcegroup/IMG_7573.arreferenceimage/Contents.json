@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "IMG_7573.jpg"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "width" : 2.1000000000000001,
+    "unit" : "centimeters"
+  }
+}
